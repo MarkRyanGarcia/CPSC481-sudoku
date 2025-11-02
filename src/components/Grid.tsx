@@ -1,4 +1,3 @@
-// import tailwindcss from "@tailwindcss/vite";
 import { useState } from "react";
 
 type Cell = {
@@ -6,10 +5,14 @@ type Cell = {
     isFixed: boolean;
 };
 
-// Initialize grid with proper Cell objects
-const emptyGrid: Cell[][] = Array.from({ length: 9 }, () =>
+
+let emptyGrid: Cell[][] = Array.from({ length: 9 }, () =>
     Array.from({ length: 9 }, () => ({ value: null, isFixed: false }))
 );
+
+// // test
+// emptyGrid[0][0] = {value: 1, isFixed: true};
+// emptyGrid[1][1].value = 2;
 
 export default function Grid() {
     const [grid, setGrid] = useState(emptyGrid);
@@ -34,7 +37,7 @@ export default function Grid() {
                         type="text"
                         value={cell.value ?? ""}
                         onChange={e => handleChange(rIdx, cIdx, e.target.value)}
-                        className={`w-10 h-10 text-center border ${cell.isFixed ? "bg-gray-200" : "bg-white"
+                        className={`w-15 h-15 text-center text-3xl border ${cell.isFixed ? "bg-gray-500" : "bg-gray-800"
                             }`}
                         maxLength={1}
                         disabled={cell.isFixed}
